@@ -527,7 +527,7 @@ form {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  padding: 0 8px;
+  /* padding: 0 8px; */
   width: auto !important;
 }
 .elgens-header .menu.level-1 > .menu-item > a {
@@ -548,7 +548,7 @@ form {
   color: #0d0d0d !important;
 }
 .elgens-header .menu.level-1 > .menu-item.has-children > a::after {
-  content: "▾";
+  /* content: "▾"; */
   font-size: 0.8em;
   color: #9aa1ab !important;
   margin-left: 2px;
@@ -564,7 +564,7 @@ form {
   background: #fff;
   border: 1px solid #eef2f6;
   border-radius: 12px;
-  padding: 8px;
+  /* padding: 8px; */
   display: none;
   -webkit-box-shadow: var(--shadow);
           box-shadow: var(--shadow);
@@ -598,7 +598,7 @@ form {
   position: relative;
 }
 .elgens-header .menu.level-2 > .menu-item.has-children > a::after {
-  content: "▸";
+  /* content: "▸"; */
   color: #a0a7b2;
   margin-left: 0.4em;
   font-size: 0.9em;
@@ -659,7 +659,7 @@ form {
   .elgens-header #elgens-menu {
     position: absolute;
     top: 100%;
-    left: 0;
+    /* left: 0; */
     right: 0;
     background: #fff;
     border-top: 1px solid #eee;
