@@ -539,7 +539,7 @@ form {
           align-items: center;
   gap: 6px;
   padding: 12px 10px;
-  color: #222 !important;
+  /* color: #222 !important; */
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.2px;
@@ -582,7 +582,7 @@ form {
 .elgens-header .menu.level-5 a {
   display: block;
   padding: 10px 12px;
-  color: #2b2f33 !important;
+  /* color: #2b2f33 !important; */
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
