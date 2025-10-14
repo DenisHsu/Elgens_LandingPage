@@ -7,7 +7,6 @@
 
     <link rel="shortcut icon" href="https://www.elgens.com.tw/wp-content/uploads/2020/07/cropped-fa_icon-32x32.png" sizes="32x32" />
 
-    <!--<title>Rugged Military & Marine Displays | MIL-STD-461/1275E Panel PCs | IEC 60945 | ELGENS</title>-->
     <title>Home - Elgens :: Panel PC, Touch Monitor with IEC60945</title>
 
     <meta name="description" content="Military- and marine-grade displays and panel PCs. MIL-STD-461/1275E/810H/704F and IEC 60945, sunlight-readable 1000–1500 nits, wide temperature, IP protection, optical bonding, MIL connectors, long-term supply, customization.">
@@ -129,7 +128,94 @@
         }
     }
 </style>
-</head>
+
+    <style>
+        /* 1. Set default and hover colors for all menu links */
+        .elgens-nav .menu-item > a {
+            color: #000000; /* Default: Black text */
+            transition: color 0.2s ease-in-out;
+        }
+
+        .elgens-nav .menu-item:hover > a,
+        .elgens-nav .menu-item > a:hover {
+            color: #ee7700; /* Hover: Orange text */
+        }
+        
+        /* Note: On mobile, when a menu section is expanded, the text color becomes white.
+           The existing CSS rule for this is more specific, so it will correctly
+           override the orange hover color, which is the desired behavior. */
+
+
+        /* --- DESKTOP MENU STYLES (for screens wider than 991px) --- */
+        @media (min-width: 992px) {
+
+            /* Hide the accordion-style toggle buttons used on mobile */
+            .elgens-nav .submenu-toggle {
+                display: none;
+            }
+
+            /* Set positioning context for dropdown menus */
+            .elgens-nav .menu-item {
+                position: relative;
+            }
+
+            /* Hide and style all dropdown menus by default */
+            .elgens-nav .menu ul {
+                display: none; /* Hide until parent is hovered */
+                position: absolute;
+                background-color: #fff;
+                border: 1px solid #eee;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                list-style: none;
+                padding-left: 0;
+                min-width: 240px; /* Give dropdowns a consistent width */
+                z-index: 999;
+            }
+
+            /* Ensure list items inside dropdowns are full-width */
+            .elgens-nav .menu ul .menu-item {
+                width: 100%;
+                border-bottom: none; /* Remove mobile separator */
+            }
+
+            /* Display the direct child menu on hover */
+            .elgens-nav .menu-item:hover > ul {
+                display: block;
+            }
+
+            /* --- Dropdown Positioning --- */
+
+            /* Position the first-level dropdown (level-2) to appear below its parent */
+            .elgens-nav .level-1 > .menu-item > .level-2 {
+                top: 100%;
+                left: 0;
+            }
+
+            /* 3. Position deeper submenus (level-3+) to appear to the side of their parent */
+            .elgens-nav .level-2 > .menu-item > .level-3,
+            .elgens-nav .level-3 > .menu-item > .level-4,
+            .elgens-nav .level-4 > .menu-item > .level-5 {
+                top: -1px; /* Align with the top border of the parent */
+                left: 100%;
+            }
+
+            /* --- Menu Links and Indentation --- */
+            
+            .elgens-nav .menu ul a {
+                display: block; /* Ensure the link fills the list item */
+                padding-top: 10px;
+                padding-bottom: 10px;
+                white-space: nowrap; /* Prevent text from wrapping */
+            }
+
+            /* 2. Set progressive indentation for each menu level */
+            .elgens-nav .menu.level-2 > .menu-item > a { padding-left: 20px; } /* Level 2 (base) */
+            .elgens-nav .menu.level-3 > .menu-item > a { padding-left: 40px; } /* Level 3 (indented) */
+            .elgens-nav .menu.level-4 > .menu-item > a { padding-left: 60px; } /* Level 4 (indented further) */
+            .elgens-nav .menu.level-5 > .menu-item > a { padding-left: 80px; } /* Level 5 (indented further) */
+        }
+    </style>
+    </head>
 <body class="view-home layout-index route-index">
     <header class="elgens-header classic" role="banner">
     <div class="container">
