@@ -397,14 +397,6 @@ form {
   top: 0;
   z-index: 1000;
   font-family: "IBM Plex Sans Condensed", sans-serif;
-  /* ===== Logo ===== */
-  /* ===== 手機漢堡 ===== */
-  /* ===== 導覽基礎 ===== */
-  /* ===== 第一層 ===== */
-  /* ===== 次層選單（白底卡片樣式） ===== */
-  /* ===== 手機子選單按鈕 ===== */
-  /* ===== 桌機 hover 展開 (已修正) ===== */
-  /* ===== 手機 Sheet ===== */
 }
 .elgens-header .container {
   max-width: 1320px;
@@ -493,7 +485,7 @@ form {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-size: 19px; /* ✅ 導覽字體大小設定 */
+  font-size: 19px;
 }
 .elgens-header .menu {
   list-style: none;
@@ -527,7 +519,6 @@ form {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  /* padding: 0 8px; */
   width: auto !important;
 }
 .elgens-header .menu.level-1 > .menu-item > a {
@@ -539,7 +530,6 @@ form {
           align-items: center;
   gap: 6px;
   padding: 12px 10px;
-  /* color: #222 !important; */
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.2px;
@@ -548,15 +538,11 @@ form {
   color: #0d0d0d !important;
 }
 .elgens-header .menu.level-1 > .menu-item.has-children > a::after {
-  /* content: "▾"; */
   font-size: 0.8em;
   color: #9aa1ab !important;
   margin-left: 2px;
 }
-.elgens-header .menu.level-2,
-.elgens-header .menu.level-3,
-.elgens-header .menu.level-4,
-.elgens-header .menu.level-5 {
+.elgens-header .menu.level-2, .elgens-header .menu.level-3, .elgens-header .menu.level-4, .elgens-header .menu.level-5 {
   position: absolute;
   left: 0;
   top: 100%;
@@ -564,44 +550,33 @@ form {
   background: #fff;
   border: 1px solid #eef2f6;
   border-radius: 12px;
-  /* padding: 8px; */
   display: none;
   -webkit-box-shadow: var(--shadow);
           box-shadow: var(--shadow);
   z-index: 1000;
 }
-.elgens-header .menu.level-3,
-.elgens-header .menu.level-4,
-.elgens-header .menu.level-5 {
-  left: 100%;
-  top: 0;
-}
-.elgens-header .menu.level-2 a,
-.elgens-header .menu.level-3 a,
-.elgens-header .menu.level-4 a,
-.elgens-header .menu.level-5 a {
+.elgens-header .menu.level-2 a, .elgens-header .menu.level-3 a, .elgens-header .menu.level-4 a, .elgens-header .menu.level-5 a {
   display: block;
   padding: 10px 12px;
-  /* color: #2b2f33 !important; */
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
 }
-.elgens-header .menu.level-2 a:hover,
-.elgens-header .menu.level-3 a:hover,
-.elgens-header .menu.level-4 a:hover,
-.elgens-header .menu.level-5 a:hover {
+.elgens-header .menu.level-2 a:hover, .elgens-header .menu.level-3 a:hover, .elgens-header .menu.level-4 a:hover, .elgens-header .menu.level-5 a:hover {
   background: #f6f8fb;
   color: #111 !important;
 }
-.elgens-header .menu.level-2 > .menu-item {
+.elgens-header .menu.level-2 > .menu-item, .elgens-header .menu.level-3 > .menu-item, .elgens-header .menu.level-4 > .menu-item, .elgens-header .menu.level-5 > .menu-item {
   position: relative;
 }
-.elgens-header .menu.level-2 > .menu-item.has-children > a::after {
-  /* content: "▸"; */
+.elgens-header .menu.level-2 > .menu-item.has-children > a::after, .elgens-header .menu.level-3 > .menu-item.has-children > a::after, .elgens-header .menu.level-4 > .menu-item.has-children > a::after, .elgens-header .menu.level-5 > .menu-item.has-children > a::after {
   color: #a0a7b2;
   margin-left: 0.4em;
   font-size: 0.9em;
+}
+.elgens-header .menu.level-3, .elgens-header .menu.level-4, .elgens-header .menu.level-5 {
+  left: 100%;
+  top: 0;
 }
 .elgens-header .submenu-toggle {
   display: -webkit-inline-box;
@@ -633,15 +608,9 @@ form {
     display: -ms-flexbox !important;
     display: flex !important;
   }
-  .elgens-header .menu.level-1 > .menu-item:hover > .menu {
-    display: block;
-  }
-  .elgens-header .menu.level-2 > .menu-item:hover > .menu {
-    display: block;
-  }
-  .elgens-header .menu.level-3 > .menu-item:hover > .menu {
-    display: block;
-  }
+  .elgens-header .menu.level-1 > .menu-item:hover > .menu,
+  .elgens-header .menu.level-2 > .menu-item:hover > .menu,
+  .elgens-header .menu.level-3 > .menu-item:hover > .menu,
   .elgens-header .menu.level-4 > .menu-item:hover > .menu {
     display: block;
   }
@@ -659,7 +628,6 @@ form {
   .elgens-header #elgens-menu {
     position: absolute;
     top: 100%;
-    /* left: 0; */
     right: 0;
     background: #fff;
     border-top: 1px solid #eee;
@@ -682,6 +650,7 @@ form {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    color: #ee7700;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
@@ -724,6 +693,151 @@ form {
   color: #0d0d0d;
 }
 
+/* 1. Set default and hover colors for all menu links */
+.elgens-nav .menu-item > a {
+  color: #ee7700;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+.elgens-nav .menu-item > a:hover, .menu-item:hover > .elgens-nav .menu-item > a {
+  color: #000000;
+}
+
+/* Note: On mobile, when a menu section is expanded, the text color becomes white.
+   The existing CSS rule for this is more specific, so it will correctly
+   override the orange hover color, which is the desired behavior. */
+@media (max-width: 991.98px) {
+  .elgens-nav .menu.level-2,
+  .elgens-nav .menu.level-3,
+  .elgens-nav .menu.level-4,
+  .elgens-nav .menu.level-5 {
+    position: static !important;
+    width: 100% !important;
+    display: none;
+    float: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    background-color: #fff;
+  }
+  .elgens-nav .menu-item {
+    width: 100% !important;
+    float: none !important;
+    display: block;
+    border-bottom: 1px solid #eee;
+  }
+  .elgens-nav .menu-item:last-child {
+    border-bottom: none;
+  }
+  .elgens-nav .menu-item.has-children {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .elgens-nav .menu-item:has(> .submenu-toggle[aria-expanded=true]) {
+    border-bottom-color: #333;
+  }
+  .elgens-nav .menu-item:has(> .submenu-toggle[aria-expanded=true]) > a,
+  .elgens-nav .menu-item:has(> .submenu-toggle[aria-expanded=true]) > .submenu-toggle {
+    color: #fff;
+  }
+  .elgens-nav .level-1 > .menu-item:has(> .submenu-toggle[aria-expanded=true]),
+  .elgens-nav .level-2 > .menu-item:has(> .submenu-toggle[aria-expanded=true]),
+  .elgens-nav .level-3 > .menu-item:has(> .submenu-toggle[aria-expanded=true]),
+  .elgens-nav .level-4 > .menu-item:has(> .submenu-toggle[aria-expanded=true]) {
+    background-color: #585858;
+  }
+  .elgens-nav .menu-item a {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    padding: 12px 15px;
+    color: #333;
+    text-decoration: none;
+    display: block;
+  }
+  .elgens-nav .submenu-toggle {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    margin-left: auto;
+    padding: 12px 15px;
+  }
+  .elgens-nav .menu.level-3 a {
+    padding-left: 30px;
+  }
+  .elgens-nav .menu.level-4 a {
+    padding-left: 45px;
+  }
+  .elgens-nav .menu.level-5 a {
+    padding-left: 60px;
+  }
+  .elgens-nav .level-1 > .menu-item:has(> .submenu-toggle[aria-expanded=true]) > .submenu-toggle {
+    display: none;
+  }
+}
+/* --- DESKTOP MENU STYLES (for screens wider than 991px) --- */
+@media (min-width: 992px) {
+  .elgens-nav .submenu-toggle {
+    display: none;
+  }
+  .elgens-nav .menu-item {
+    position: relative;
+  }
+  .elgens-nav .menu ul {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #eee;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding-left: 0;
+    min-width: 240px;
+    z-index: 999;
+  }
+  .elgens-nav .menu ul .menu-item {
+    width: 100%;
+    border-bottom: none;
+  }
+  .elgens-nav .menu-item:hover > ul {
+    display: block;
+  }
+  .elgens-nav .level-1 > .menu-item > .level-2 {
+    top: 100%;
+    left: 0;
+  }
+  .elgens-nav .level-2 > .menu-item > .level-3,
+  .elgens-nav .level-3 > .menu-item > .level-4,
+  .elgens-nav .level-4 > .menu-item > .level-5 {
+    top: -1px;
+    left: 100%;
+  }
+  .elgens-nav .menu ul a {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    white-space: nowrap;
+  }
+  .elgens-nav .menu.level-2 > .menu-item > a {
+    padding-left: 20px;
+  }
+  .elgens-nav .menu.level-3 > .menu-item > a {
+    padding-left: 40px;
+  }
+  .elgens-nav .menu.level-4 > .menu-item > a {
+    padding-left: 60px;
+  }
+  .elgens-nav .menu.level-5 > .menu-item > a {
+    padding-left: 80px;
+  }
+}
 .l-float-tools {
   background: rgba(13, 13, 13, 0.4);
   backdrop-filter: blur(10px);
