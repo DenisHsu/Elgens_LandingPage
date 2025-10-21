@@ -38,38 +38,41 @@ function initTextAnimations() {
     });
   });
 }
-window.addEventListener("resize", () => {
-  splitInstances.forEach(instance => {
-    const {
-      el,
-      split,
-      mask
-    } = instance;
-    split.revert();
-    mask.revert();
-    instance.split = new SplitText(el, {
-      type: "lines",
-      linesClass: "lineChild"
-    });
-    instance.mask = new SplitText(el, {
-      type: "lines",
-      linesClass: "lineParent"
-    });
-  });
-  ScrollTrigger.refresh();
-});
+
+// window.addEventListener("resize", () => {
+//   splitInstances.forEach(instance => {
+//     const {
+//       el,
+//       split,
+//       mask
+//     } = instance;
+//     split.revert();
+//     mask.revert();
+//     instance.split = new SplitText(el, {
+//       type: "lines",
+//       linesClass: "lineChild"
+//     });
+//     instance.mask = new SplitText(el, {
+//       type: "lines",
+//       linesClass: "lineParent"
+//     });
+//   });
+//   ScrollTrigger.refresh();
+// });
+
 function handleResponsiveBr() {
   const headers = document.querySelectorAll(".js-text-fadeup");
   headers.forEach(el => {
-    if (window.innerWidth >= 992) {
+    if (window.innerWidth >= 1400) {
       el.innerHTML = el.innerHTML.replace(/<br\s*class="d-lg-none"\s*\/?>/g, "");
     } else {
       el.innerHTML = el.innerHTML.replace(/<br\s*class="d-lg-none"\s*\/?>/g, "<br>");
     }
   });
 }
-window.addEventListener("resize", handleResponsiveBr);
-handleResponsiveBr();
+
+// window.addEventListener("resize", handleResponsiveBr);
+// handleResponsiveBr();
 
 // ===== product sliders =====
 const sliders = gsap.utils.toArray(".js-product-slider");
@@ -79,7 +82,7 @@ const container = document.querySelector(".js-product-container");
 let productTL;
 let scrollTriggerInstance;
 function initProductSection() {
-  const isDesktop = window.innerWidth >= 992;
+  const isDesktop = window.innerWidth >= 1400;
   gsap.killTweensOf(sliders);
   if (scrollTriggerInstance) {
     scrollTriggerInstance.kill();
@@ -204,7 +207,7 @@ function initProductSection() {
   }
 }
 initProductSection();
-window.addEventListener("resize", initProductSection);
+// window.addEventListener("resize", initProductSection);
 
 // ===== number progress =====
 gsap.utils.toArray(".js-counter-number").forEach(el => {
@@ -246,7 +249,7 @@ function debounce(func) {
   };
 }
 function initCardStack() {
-  const isDesktop = window.innerWidth >= 992;
+  const isDesktop = window.innerWidth >= 1400;
   scrollTriggerInstances.forEach(st => st.kill());
   scrollTriggerInstances = [];
   gsap.killTweensOf(cards);
@@ -292,10 +295,11 @@ function initCardStack() {
 }
 initCardStack();
 ScrollTrigger.refresh();
-window.addEventListener("resize", debounce(() => {
-  initCardStack();
-  ScrollTrigger.refresh();
-}, 100));
+
+// window.addEventListener("resize", debounce(() => {
+//   initCardStack();
+//   ScrollTrigger.refresh();
+// }, 100));
 
 // ==== certificied slider =====
 window.addEventListener("load", () => {
@@ -373,15 +377,16 @@ window.addEventListener("load", () => {
     updateList(true);
   });
 });
-let resizeTimer;
-window.addEventListener("resize", () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    if (window.innerWidth >= 992) {
-      location.reload();
-    }
-  }, 200);
-});
+
+// let resizeTimer;
+// window.addEventListener("resize", () => {
+//   clearTimeout(resizeTimer);
+//   resizeTimer = setTimeout(() => {
+//     if (window.innerWidth >= 1400) {
+//       location.reload();
+//     }
+//   }, 200);
+// });
 
 // ==== select ====
 document.querySelectorAll(".js-tom-select").forEach(el => {
