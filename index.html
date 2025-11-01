@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <!-- <base href="/new_Home/"> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -24,7 +25,9 @@
     <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
 
     <link href="./assets/css/bootstrap.css?f4afaa0204b00f772974b6b7" rel="stylesheet" />
-        <link href="./assets/css/main.css?f4afaa0204b00f772974b6b7" rel="stylesheet">
+    <link href="./assets/css/main.css?f4afaa0204b00f772974b6b7" rel="stylesheet">
+    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     </head>
 <body class="view-home layout-index route-index">
@@ -593,7 +596,7 @@
                                     Defense Server delivers quantum‑safe security using NIST FIPS 203/204 post‑quantum cryptography (PQC), integrated with the X‑Corleone Safe Platform for unified device management. The platform provides dual TPM 2.0 for secure boot, strong authentication, TLS 1.3 with PQC for encrypted communications, and full‑disk encryption to protect data at rest.
                                 </p>
                                 <div class="text-end">
-                                    <a href="https://www.elgens.com.tw/defense/x-corleone-series/x-corleone-series/"
+                                    <a href="https://www.elgens.com.tw/defense/pqc-and-edge-security/x-corleone-series/"
                                         onclick="gtag('event', 'feature_click', { 'feature_section': 'SERVICES', 'feature_title': 'Defense Server' });"
                                         target="_blank" class="c-link-more stretched-link">
                                         More <span class="ms-1">Detail</span>
@@ -826,7 +829,7 @@
                             <p class="mb-4">
                                 X‑Corleone enables in‑place AI at the point of capture. High‑throughput vision—detection, tracking, multi‑sensor fusion—no cloud round trips. Outdoor‑ready: temp swings, shock/vibe, dust, humidity, EMI; 24/7. Post‑quantum security + multi‑layer hardware RoT protect model load, commands, firmware, and data from interception/tampering/stealth.
                             </p>
-                            <a href="https://www.elgens.com.tw/defense/x-corleone-series/x-corleone-series/"
+                            <a href="https://www.elgens.com.tw/defense/pqc-and-edge-security/x-corleone-series/"
                                 onclick="gtag('event', 'feature_click', { 'feature_section': 'FEATURED PRODUCTS', 'feature_title': 'X-CORLEONE' });"
                                 target="_blank"
                                 class="btn btn-lg c-btn-feature c-btn-feature--black">
@@ -2144,8 +2147,17 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="col-12 pt-28px"> 
+                                    <div class="c-form-group form-floating">
+                                        <div class="g-recaptcha"
+                                            data-sitekey="6LfGk_4rAAAAAPnZUDaaWDj5fgrDGsl3oRUi3wEZ"
+                                            data-callback="onCaptchaSuccess"
+                                            data-expired-callback="onCaptchaExpired"
+                                            data-error-callback="onCaptchaError">
+                                        </div>
+                                    </div>            
                                 </div>
+                            </div>
                             <div class="text-center">
                                 <button type="submit"
                                     onclick="gtag('event', 'feature_click', { 'feature_section': 'CONTACT', 'feature_title': 'Send Message' });"
@@ -2319,6 +2331,70 @@
     }
   });
 </script>
+
+<script>
+    (function () {
+      const form = document.getElementById('googleForm');
+      const submitBtn = document.getElementById('submitBtn');
+
+      // 初始：禁用送出
+      function disableSubmit() {
+        if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
+      }
+      function enableSubmit() {
+        if (submitBtn) submitBtn.removeAttribute('disabled');
+      }
+
+      disableSubmit();
+
+      // reCAPTCHA 回呼（HTML data-callback 綁定）
+      window.onCaptchaSuccess = function () {
+        // 只有在 token 存在時才啟用
+        try {
+          const token = grecaptcha.getResponse();
+          if (token && token.length > 0) {
+            enableSubmit();
+          } else {
+            disableSubmit();
+          }
+        } catch (e) {
+          disableSubmit();
+        }
+      };
+
+      window.onCaptchaExpired = function () {
+        disableSubmit();
+        try { grecaptcha.reset(); } catch (e) {}
+      };
+
+      window.onCaptchaError = function () {
+        disableSubmit();
+        try { grecaptcha.reset(); } catch (e) {}
+      };
+
+      // 送出前再次確認已勾選（確保「每次都要回答」）
+      form.addEventListener('submit', function (e) {
+        try {
+          const token = grecaptcha.getResponse();
+          if (!token || token.length === 0) {
+            e.preventDefault();
+            disableSubmit();
+            alert('請先完成「我不是機器人」驗證。');
+            return false;
+          }
+          // 送出當下先鎖按鈕，避免連點
+          disableSubmit();
+          // （若你的頁面送出後不會跳轉，也可在這裡 reset 讓下一次必須重答）
+          // setTimeout(() => { try { grecaptcha.reset(); disableSubmit(); } catch (e) {} }, 1000);
+        } catch (err) {
+          e.preventDefault();
+          disableSubmit();
+          alert('reCAPTCHA 尚未初始化，請稍後再試。');
+          return false;
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
