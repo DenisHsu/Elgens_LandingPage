@@ -72,7 +72,7 @@ function handleResponsiveBr() {
 }
 
 // window.addEventListener("resize", handleResponsiveBr);
-// handleResponsiveBr();
+handleResponsiveBr();
 
 // ===== product sliders =====
 const sliders = gsap.utils.toArray(".js-product-slider");
@@ -117,15 +117,20 @@ function initProductSection() {
       });
     });
     container.style.height = maxHeight + "px";
+    //add
+    const scrollDistance = window.innerHeight * (sliders.length - 1);
+    sectionProduct.style.marginBottom = scrollDistance + "px";
+    //
     const tl = gsap.timeline({
       scrollTrigger: {
         id: "product-st",
         trigger: sectionProduct,
         start: "top-=72 top",
-        end: "+=" + window.innerHeight - 112 * (sliders.length - 1),
+        end: "+=" + scrollDistance,
         scrub: true,
         pin: true,
-        pinSpacing: true,
+        // pinSpacing: true,
+        pinSpacing: false,
         onUpdate: self => {
           const index = Math.round(self.progress * (sliders.length - 1));
           sliders.forEach((s, i) => gsap.set(s, {
@@ -184,26 +189,53 @@ function initProductSection() {
     });
     ScrollTrigger.refresh();
   } else {
-    sliders.forEach(item => gsap.set(item, {
-      opacity: 1,
-      pointerEvents: "auto",
-      clearProps: "y"
-    }));
-    container.style.height = "auto";
-    tabs.forEach((tab, i) => {
-      tab.onclick = e => {
-        e.preventDefault();
-        const slider = sliders[i];
-        if (slider) {
-          slider.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        }
-        tabs.forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
-      };
-    });
+    // sliders.forEach(item => gsap.set(item, {
+    //   opacity: 1,
+    //   pointerEvents: "auto",
+    //   clearProps: "y"
+    // }));
+    // container.style.height = "auto";
+    // tabs.forEach((tab, i) => {
+    //   tab.onclick = e => {
+    //     e.preventDefault();
+    //     const slider = sliders[i];
+    //     if (slider) {
+    //       slider.scrollIntoView({
+    //         behavior: "smooth",
+    //         block: "start"
+    //       });
+    //     }
+    //     tabs.forEach(t => t.classList.remove("active"));
+    //     tab.classList.add("active");
+    //   };
+    // });
+    if (!isDesktop) {
+      sliders.forEach(item => gsap.set(item, {
+        opacity: 1,
+        pointerEvents: "auto",
+        clearProps: "y"
+      }));
+      container.style.height = "auto";
+      if (scrollTriggerInstance) {
+        scrollTriggerInstance.kill();
+        scrollTriggerInstance = null;
+      }
+      tabs.forEach((tab, i) => {
+        tab.onclick = e => {
+          e.preventDefault();
+          const slider = sliders[i];
+          if (slider) {
+            slider.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          }
+          tabs.forEach(t => t.classList.remove("active"));
+          tab.classList.add("active");
+        };
+      });
+      return;
+    }
   }
 }
 initProductSection();
@@ -237,7 +269,6 @@ const sectionCase = document.querySelector(".l-section--cases");
 const cards = gsap.utils.toArray(".l-section--cases .card");
 let scrollTriggerInstances = [];
 function debounce(func) {
-  var _this = this;
   let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
   let timeout;
   return function () {
@@ -245,7 +276,7 @@ function debounce(func) {
       args[_key] = arguments[_key];
     }
     clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(_this, args), wait);
+    timeout = setTimeout(() => func.apply(this, args), wait);
   };
 }
 function initCardStack() {
@@ -256,12 +287,17 @@ function initCardStack() {
   cards.forEach(card => gsap.set(card, {
     clearProps: "all"
   }));
-  if (!isDesktop) {
-    cards.forEach(card => gsap.set(card, {
-      clearProps: "all"
-    }));
-    return;
-  }
+  // if (!isDesktop) {
+  //   cards.forEach(card => gsap.set(card, {
+  //     clearProps: "all"
+  //   }));
+  //   return;
+  // }
+  gsap.set(sectionCase, {
+    clearProps: "all",
+    height: "auto"
+  });
+  if (!isDesktop) return;
   const overlap = 0.98;
   let cardHeights = cards.map(card => card.offsetHeight);
   let totalHeight = cardHeights.reduce((sum, h, i) => {
@@ -269,18 +305,23 @@ function initCardStack() {
     return sum + h * overlap;
   }, 0);
   sectionCase.style.height = totalHeight * 1.3 + "px";
-  ScrollTrigger.create({
+  // ScrollTrigger.create({
+  const mainPin = ScrollTrigger.create({
     trigger: sectionCase,
-    start: "top top",
+    start: "top-=48 top",
     end: () => `+=${totalHeight}`,
     pin: true,
     pinSpacing: false
   });
+  //add
+  scrollTriggerInstances.push(mainPin);
   let accumulated = 0;
   cards.forEach((card, i) => {
     if (i === 0) return;
     accumulated += cardHeights[i - 1] * overlap;
-    scrollTriggerInstances.push(gsap.to(card, {
+
+    // scrollTriggerInstances.push(gsap.to(card, {
+    const st = gsap.to(card, {
       y: -accumulated,
       scale: 1 + i * 0.01,
       ease: "power2.out",
@@ -290,16 +331,19 @@ function initCardStack() {
         end: () => `top+=${cardHeights[i - 1]} top`,
         scrub: true
       }
-    }));
+      // }));
+    });
+    scrollTriggerInstances.push(st.scrollTrigger);
   });
 }
 initCardStack();
 ScrollTrigger.refresh();
 
+// add
 // window.addEventListener("resize", debounce(() => {
 //   initCardStack();
 //   ScrollTrigger.refresh();
-// }, 100));
+// }, 150));
 
 // ==== certificied slider =====
 window.addEventListener("load", () => {
@@ -377,6 +421,14 @@ window.addEventListener("load", () => {
     updateList(true);
   });
 });
+window.addEventListener("load", () => {
+  initProductSection();
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 50);
+  initCardStack();
+  ScrollTrigger.refresh();
+});
 
 // let resizeTimer;
 // window.addEventListener("resize", () => {
@@ -422,4 +474,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }).catch(error => console.error('Error!', error.message));
   };
 });
+let lastWidth = window.innerWidth;
+window.addEventListener("resize", debounce(() => {
+  const widthDiff = Math.abs(window.innerWidth - lastWidth);
+  if (widthDiff >= 100 && window.innerWidth >= 1400) {
+    setTimeout(() => {
+      location.reload();
+      handleResponsiveBr();
+      initProductSection();
+      initCardStack();
+      ScrollTrigger.refresh();
+    }, 50);
+    lastWidth = window.innerWidth;
+  }
+}));
 //# sourceMappingURL=home.js.map
