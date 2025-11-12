@@ -799,7 +799,7 @@ form {
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     list-style: none;
     padding-left: 0;
-    min-width: 240px;
+    min-width: 150px;
     z-index: 999;
   }
   .elgens-nav .menu ul .menu-item {
@@ -811,13 +811,15 @@ form {
   }
   .elgens-nav .level-1 > .menu-item > .level-2 {
     top: 100%;
-    left: 0;
+    left: 0;    
+    min-width: 150px;
   }
   .elgens-nav .level-2 > .menu-item > .level-3,
   .elgens-nav .level-3 > .menu-item > .level-4,
   .elgens-nav .level-4 > .menu-item > .level-5 {
     top: -1px;
     left: 100%;
+    min-width: 150px;
   }
   .elgens-nav .menu ul a {
     display: block;
@@ -826,16 +828,16 @@ form {
     white-space: nowrap;
   }
   .elgens-nav .menu.level-2 > .menu-item > a {
-    padding-left: 20px;
+    padding-left: 15px;
   }
   .elgens-nav .menu.level-3 > .menu-item > a {
-    padding-left: 40px;
+    padding-left: 20px;
   }
   .elgens-nav .menu.level-4 > .menu-item > a {
-    padding-left: 60px;
+    padding-left: 20px;
   }
   .elgens-nav .menu.level-5 > .menu-item > a {
-    padding-left: 80px;
+    padding-left: 20px;
   }
 }
 .l-float-tools {

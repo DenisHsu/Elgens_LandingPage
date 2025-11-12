@@ -12,9 +12,7 @@
     <meta name="keywords" content="military display, marine display, naval rugged display, rugged defense display, rugged panel pc, MIL-STD-461, MIL-STD-1275E, MIL-STD-810H, MIL-STD-704F, IEC 60945, sunlight readable display, 1000 nits, 1500 nits, wide temperature, IP65, IP67, optical bonding, MIL connectors, naval bridge display, marine panel pc, defense panel pc, EMI/EMC compliant display, vehicle power conditioning, long-term supply, customization.">
     <meta property="og:site_name" content="Rugged Military &amp; Marine Displays | MIL-STD-461/1275E Panel PCs | IEC 60945 | ELGENS">
     <meta property="og:description" content="Military- and marine-grade displays and panel PCs. MIL-STD-461/1275E/810H/704F and IEC 60945, sunlight-readable 1000–1500 nits, wide temperature, IP protection, optical bonding, MIL connectors, long-term supply, customization.">
-
-    
-    
+      
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
@@ -25,9 +23,32 @@
     <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
 
     <link href="./assets/css/bootstrap.css?dfbb9efafcf0b1187493a7e8" rel="stylesheet" />
-        <link href="./assets/css/main.css?dfbb9efafcf0b1187493a7e8" rel="stylesheet">
+    <link href="./assets/css/main.css?dfbb9efafcf0b1187493a7e8" rel="stylesheet">
 
-    </head>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+    /* 主選單每項目前後共 1em（即兩個半行空白），去除多餘空白 */
+    .elgens-header.classic .elgens-nav .menu.level-1 > li > a {
+      display: inline-block !important;
+      width: auto !important;
+      white-space: nowrap !important;
+      text-align: center;
+      padding: 0 1em !important; /* 前後共 1em */
+    }
+
+    /* 移除 span 的 padding，避免重複 */
+    .elgens-header.classic .elgens-nav .menu.level-1 > li > a > span {
+      display: inline !important;
+      padding: 0 !important;
+    }
+
+    /* Hover 效果緊貼文字 */
+    .elgens-header.classic .elgens-nav .menu.level-1 > li > a:hover {
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    </style>
+</head>
 <body class="view-home layout-index route-index">
     <header class="elgens-header classic" role="banner">
     <div class="container">
@@ -277,11 +298,11 @@
                             <a href="https://www.elgens.com.tw/defense/mil-std-461g/">MIL-STD-461G</a>
                             <button class="submenu-toggle" aria-label="展開子選單" aria-expanded="false">▾</button>
                             <ul class="menu level-3">
-                                <li class="menu-item has-children">
-                                    <a href="https://www.elgens.com.tw/defense/mil-std-461g/touch-monitor-d39/">Touch Monitor</a>
-                                    <button class="submenu-toggle" aria-label="展開子選單" aria-expanded="false">▾
-                                    </button>
-                                    <ul class="menu level-4">
+                                <li class="menu-item">
+                                    <a href="https://www.elgens.com.tw/defense/mil-std-461g/defense-monitor-d39/">Defense Monitor</a>
+                                    <!-- <button class="submenu-toggle" aria-label="展開子選單" aria-expanded="false">▾
+                                    </button> -->
+                                    <!-- <ul class="menu level-4">
                                         <li class="menu-item has-children">
                                             <a href="https://www.elgens.com.tw/defense/mil-std-461g/touch-monitor-d39/tdm-rugged-specialty/">TDM Rugged Specialty</a>
                                             <button class="submenu-toggle" aria-label="展開子選單"
@@ -309,6 +330,15 @@
                                                     <a href="https://www.elgens.com.tw/defense/mil-std-461g/touch-monitor-d39/tdm-flush-mount/tdm-d240/">TDM-D240</a>
                                                 </li>
                                             </ul>
+                                        </li>
+                                    </ul> -->
+                                </li>
+                                <li class="menu-item has-children">
+                                    <a href="#">Defense PC</a>
+                                    <button class="submenu-toggle" aria-label="展開子選單" aria-expanded="false">▾</button>
+                                    <ul class="menu level-4">
+                                        <li class="menu-item">
+                                            <a href="https://www.elgens.com.tw/defense/mil-std-461g/defense-pc/lpc-d240/">LPC-D240 Series</a>
                                         </li>
                                     </ul>
                                 </li>
